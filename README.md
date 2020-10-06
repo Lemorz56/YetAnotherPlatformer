@@ -27,7 +27,6 @@ Outline the file contents of the repository. It helps users navigate the codebas
 Compiler:
 - C++ compiler (I Used Cmake)
 - SDL2, SDL2 Image, SDL2 TTF.
-
 #TO BE FINISHED
 <!--
 Outline the required components and tools that a user might need to have on their machine in order to run the sample. 
