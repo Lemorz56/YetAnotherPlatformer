@@ -21,6 +21,7 @@ Outline the file contents of the repository. It helps users navigate the codebas
 | `CHANGELOG.md`    | List of changes                            |
 | `CONTRIBUTING.md` | Guidelines for contributing.               |
 | `README.md`       | This README file.                          |
+| `OTHER FOLDERS`   | Description of folders|
 
 ## Prerequisites
 
