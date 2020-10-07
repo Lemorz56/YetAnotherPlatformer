@@ -5,10 +5,6 @@
 #include "includes/graphics.h"
 #include "includes/input.h"
 
-/* Game Class
- * Holds all information for our main game loop
- */
-
 // Creating the in namespace to keep the out of the way, dont want them global
 namespace {
     const int FPS = 50;

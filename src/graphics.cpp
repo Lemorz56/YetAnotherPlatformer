@@ -1,9 +1,6 @@
 // Created by Sebastian Mossberg on 2020-10-06.
 // Copyright (c) 2020 MSBRG. All rights reserved.
-/*
- * Graphics Class
- * Holds all information to deal with the graphics for the game
- */
+
 #include <SDL.h>
 #include "includes/graphics.h"
 

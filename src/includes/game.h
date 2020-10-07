@@ -3,6 +3,10 @@
 #ifndef GAME_H
 #define GAME_H
 
+/* Game Class
+ * Holds all information for our main game loop
+ */
+
 // Forward declare Graphics class
 class Graphics;
 
