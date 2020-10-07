@@ -137,14 +137,16 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		/opt
 	)
 # On 32bit build find the 32bit libs
+
 ELSE(CMAKE_SIZEOF_VOID_P EQUAL 8)
 	FIND_LIBRARY(SDL2_LIBRARY_TEMP SDL2
 		HINTS
 		${SDL2}
 		$ENV{SDL2}
 		PATH_SUFFIXES lib
-		lib/x86
-		i686-w64-mingw32/lib
+		lib/x64
+		#i686-w64-mingw32/lib
+		x64/x86_64-w64
 		PATHS
 		/sw
 		/opt/local
