@@ -6,8 +6,14 @@
 #include "includes/input.h"
 
 /* Game Class
- * This class holds all information for our main game loop
+ * Holds all information for our main game loop
  */
+
+// Creating the in namespace to keep the out of the way, dont want them global
+namespace {
+    const int FPS = 50;
+    const int MAX_FRAME_TIME = 5 * 1000 / FPS;
+}
 
 Game::Game() {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -23,6 +29,8 @@ void Game::gameLoop() {
     Input input;
     SDL_Event event;
 
+    int LAST_UPDATE_TIME = SDL_GetTicks();
+    // STARTING GAME LOOP
     while (true){
         input.beginNewFrame(); // Reset pressed keys and release key
 
@@ -40,10 +48,17 @@ void Game::gameLoop() {
                 return;
             }
         }
-        // Using our own function to check if escape was pressed - then quit game loop
+        // Using input function to check if escape was pressed - then quit game loop
         if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)){
             return;
         }
+
+        const int CURRENT_TIME_MS = SDL_GetTicks();
+        int ELAPSED_TIME_MS = CURRENT_TIME_MS - LAST_UPDATE_TIME;
+        // If this takes less time then MAX_FRAME_TIME - pass it along
+        // If takes more then MAX_FRAME_TIME - pass MAX_FRAME_TIME
+        this->update(std::min(ELAPSED_TIME_MS, MAX_FRAME_TIME));
+        LAST_UPDATE_TIME = CURRENT_TIME_MS;
     }
 }
 

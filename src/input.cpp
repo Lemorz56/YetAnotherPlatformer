@@ -5,7 +5,7 @@
  * Keeps track of keyboard state
  */
 
-// This function gets called at the beginning of each new frame
+// Function gets called at the beginning of each new frame
 // to reset the keys that are no longer relevant
 void Input::beginNewFrame() {
     this->_pressedKeys.clear();
