@@ -35,7 +35,7 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
 
-add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp)
+add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp src/sprite.cpp)
 
 target_link_libraries(YetAnotherPlatformer ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
 

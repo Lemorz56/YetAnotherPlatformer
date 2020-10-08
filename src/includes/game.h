@@ -2,6 +2,7 @@
 // Copyright (c) 2020 MSBRG. All rights reserved.
 #ifndef GAME_H
 #define GAME_H
+#include "sprite.h"
 
 /* Game Class
  * Holds all information for our main game loop
@@ -18,6 +19,8 @@ private:
     void gameLoop();
     void draw(Graphics &graphics);
     void update(float elapsedTime);
+
+    Sprite _player;
 };
 
 #endif //GAME_H
