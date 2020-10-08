@@ -5,9 +5,10 @@
 #include <SDL_image.h>
 
 #include "includes/graphics.h"
+#include "includes/globals.h"
 
 Graphics::Graphics() {
-    SDL_CreateWindowAndRenderer(640, 480, 0, &this->_window, &this->_renderer);
+    SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &this->_window, &this->_renderer);
     SDL_SetWindowTitle(this->_window, "YetAnotherPlatformer");
 }
 
@@ -20,10 +21,9 @@ SDL_Surface* Graphics::loadImage(const std::string &filePath) {
         this->_spriteSheets[filePath] = IMG_Load(filePath.c_str());
     }
     return this->_spriteSheets[filePath];
-    // Making sure we only load each image once, if it already is loaded great, if its not then load it!
 }
 
-void Graphics::blitSurface(SDL_Texture *texture, SDL_Rect *sourceRectangle, SDL_Rect *destinationRectangle) {
+void Graphics::blitSurface(SDL_Texture* texture, SDL_Rect* sourceRectangle, SDL_Rect* destinationRectangle) {
     SDL_RenderCopy(this->_renderer, texture, sourceRectangle, destinationRectangle);
 }
 

@@ -10,12 +10,11 @@
 #include <string>
 #include "graphics.h"
 
-class Sprite{
+class Sprite {
 public:
     Sprite();
-    Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int sourceY,
-            int width, int height, float posX, float posY);
-
+    Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int sourceY, int width, int height,
+           float posX, float posY);
     virtual ~Sprite();
     virtual void update();
     void draw(Graphics &graphics, int x, int y);
