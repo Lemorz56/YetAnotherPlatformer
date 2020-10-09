@@ -2,7 +2,7 @@
 // Copyright (c) 2020 MSBRG. All rights reserved.
 #ifndef GAME_H
 #define GAME_H
-#include "sprite.h"
+#include "animatedsprite.h"
 
 /* Game Class
  * Holds all information for our main game loop
@@ -20,7 +20,7 @@ private:
     void draw(Graphics &graphics);
     void update(float elapsedTime);
 
-    Sprite _player;
+    AnimatedSprite _player;
 };
 
 #endif //GAME_H
