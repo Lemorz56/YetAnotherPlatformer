@@ -84,12 +84,8 @@ void AnimatedSprite::draw(Graphics &graphics, int x, int y) {
     }
 }
 
-void AnimatedSprite::animationDone(std::string currentAnimation) {
-
-}
-
-void AnimatedSprite::setupAnimations() {
-    // THIS WILL ONLY BE USED BY CLASSES/STUFF THAT INHERITS THIS
-    this->addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0,0));
-    this->addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0,0));
-}
+//void AnimatedSprite::setupAnimations() {
+//    // THIS WILL ONLY BE USED BY CLASSES/STUFF THAT INHERITS THIS
+//    this->addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0,0));
+//    this->addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0,0));
+//}
