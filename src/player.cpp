@@ -1,8 +1,7 @@
 // Created by Sebastian on 2020-10-09.
 // Copyright (c) 2020 MSBRG. All rights reserved.
 #include "includes/player.h"
-#include "includes/graphics.h"
-//#include "includes/animatedsprite.h"
+//#include "includes/graphics.h"
 
 namespace player_constants {
     const float WALK_SPEED = 0.2f;
