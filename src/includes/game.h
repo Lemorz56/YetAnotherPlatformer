@@ -3,6 +3,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "player.h"
+#include "level.h"
 
 /* Game Class
  * Holds all information for our main game loop
@@ -21,6 +22,8 @@ private:
     void update(float elapsedTime);
 
     Player _player;
+
+    Level _level;
 };
 
 #endif //GAME_H
