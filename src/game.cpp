@@ -30,7 +30,6 @@ void Game::gameLoop() {
     // CREATE & INIT LEVEL
     this->_level = Level("map 1", Vector2(100, 100), graphics);
 
-
     int LAST_UPDATE_TIME = SDL_GetTicks();
     // STARTING GAME LOOP
     while (true){

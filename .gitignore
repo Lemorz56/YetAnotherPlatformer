@@ -34,3 +34,4 @@
 # User defined
 .idea/
 cmake-build-debug/
+NOTES.txt
