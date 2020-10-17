@@ -35,7 +35,17 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
 
-add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp src/sprite.cpp src/animatedsprite.cpp src/player.cpp src/level.cpp)
+add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp src/sprite.cpp src/animatedsprite.cpp src/player.cpp src/level.cpp src/tile.cpp)
+
+#add_custom_command(TARGET YetAnotherPlatformer PRE_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E copy_directory
+#        ${CMAKE_SOURCE_DIR}/res/ $<TARGET_FILE_DIR:YetAnotherPlatformer>)
+
+add_custom_command(
+        TARGET YetAnotherPlatformer POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                ${CMAKE_SOURCE_DIR}/res/
+                ${CMAKE_CURRENT_BINARY_DIR}/res/)
 
 target_link_libraries(YetAnotherPlatformer ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
 

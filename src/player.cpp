@@ -10,9 +10,9 @@ namespace player_constants {
 Player::Player() {};
 
 Player::Player(Graphics &graphics, float x, float y) :
-    AnimatedSprite(graphics, "res/sprites/MyChar.png", 0, 0, 16, 16, x, y, 100)
+    AnimatedSprite(graphics, "res/sprites/MyCharFinal.png", 0, 0, 16, 16, x, y, 100)
 {
-    graphics.loadImage("res/sprites/MyChar.png");
+    graphics.loadImage("res/sprites/MyCharFinal.png");
 
     this->setupAnimations();
     this->playAnimation("RunRight");
