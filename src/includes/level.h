@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "globals.h"
-#include "includes/tile.h"
+#include "tile.h"
 
 class Graphics;
 struct SDL_Texture;

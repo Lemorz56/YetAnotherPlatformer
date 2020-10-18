@@ -13,6 +13,7 @@ namespace {
 
 Game::Game() {
     SDL_Init(SDL_INIT_EVERYTHING);
+    printf("SDL Init done\n");
     this->gameLoop();
 }
 
@@ -24,11 +25,14 @@ void Game::gameLoop() {
     Graphics graphics;
     Input input;
     SDL_Event event;
-
+    printf("Starting Gameloop\n");
     // CREATE & INIT PLAYER
     this->_player = Player(graphics, 100, 100);
+    printf("Player Loaded\n");
     // CREATE & INIT LEVEL
-    this->_level = Level("map 1", Vector2(100, 100), graphics);
+    printf("Loading Map...\n");
+    this->_level = Level("Map1", Vector2(100, 100), graphics);
+    printf("Map Loaded\n");
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
     // STARTING GAME LOOP

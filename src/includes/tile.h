@@ -2,7 +2,7 @@
 // Copyright (c) 2020 MSBRG. All rights reserved.
 #ifndef TILE_H
 #define TILE_H
-#include "includes/globals.h"
+#include "globals.h"
 
 struct SDL_Texture;
 class Graphics;

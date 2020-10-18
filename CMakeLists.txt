@@ -35,7 +35,9 @@ find_package(SDL2_ttf REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
 
-add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp src/sprite.cpp src/animatedsprite.cpp src/player.cpp src/level.cpp src/tile.cpp)
+add_executable(YetAnotherPlatformer src/main.cpp src/graphics.cpp src/game.cpp src/input.cpp
+                                    src/sprite.cpp src/animatedsprite.cpp src/player.cpp src/level.cpp src/tile.cpp
+                                    src/tinyxml2.cpp)
 
 #add_custom_command(TARGET YetAnotherPlatformer PRE_BUILD
 #        COMMAND ${CMAKE_COMMAND} -E copy_directory
