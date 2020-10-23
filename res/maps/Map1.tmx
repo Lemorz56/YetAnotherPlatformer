@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
- <tileset firstgid="1" name="PrtCave" tilewidth="16" tileheight="16" tilecount="80" columns="16">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="41">
+ <tileset firstgid="1" name="PrtCave" tilewidth="16" tileheight="16" tilecount="0" columns="16">
   <image source="res/tilesets/PrtCave.png" width="256" height="80"/>
  </tileset>
  <layer id="1" name="background" width="20" height="16">
@@ -327,7 +327,21 @@
    <tile gid="49"/>
   </data>
  </layer>
- <layer id="2" name="Tile Layer 1" width="20" height="16">
+ <objectgroup id="3" name="collisions">
+  <object id="21" x="144" y="16" width="16" height="16"/>
+  <object id="23" x="144.25" y="64.25" width="15.5" height="15.25"/>
+  <object id="24" x="128" y="144.25" width="48.25" height="15.75"/>
+  <object id="25" x="192.25" y="144.25" width="16.25" height="15.5"/>
+  <object id="26" x="208.25" y="128.25" width="16" height="16"/>
+  <object id="28" x="176" y="32.75" width="16.75" height="32"/>
+  <object id="29" x="95" y="131" width="17.6667" height="45"/>
+  <object id="33" x="224" y="128.667" width="16" height="15"/>
+  <object id="34" x="240.333" y="53" width="15.6667" height="90.3333"/>
+  <object id="38" x="112.333" y="80.6667" width="128.333" height="15.3333"/>
+  <object id="39" x="64" y="31" width="15.6667" height="112.333"/>
+  <object id="40" x="63.3333" y="131" width="48" height="14"/>
+ </objectgroup>
+ <layer id="2" name="Tile Layer 1" width="20" height="16" visible="0">
   <data>
    <tile/>
    <tile/>

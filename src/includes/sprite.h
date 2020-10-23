@@ -8,7 +8,10 @@
 #define SPRITE_H
 #include <SDL.h>
 #include <string>
+
 #include "graphics.h"
+#include "rectangle.h"
+#include "globals.h"
 
 class Sprite {
 public:
@@ -18,9 +21,15 @@ public:
     virtual ~Sprite();
     virtual void update();
     void draw(Graphics &graphics, int x, int y);
+
+    const Rectangle getBoundingBox() const;
+    const sides::Side getCollisionSide(Rectangle &other) const;
+
 protected:
     SDL_Rect _sourceRect;
     SDL_Texture* _spriteSheet;
+
+    Rectangle _boundingBox;
 
     float _x, _y;
 private:

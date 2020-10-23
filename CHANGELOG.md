@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
-## [0.0.1-Alpha.1] - 2020-10-10
+## [0.0.1-Alpha.2] - 2020-10-10
 ### Added
 - Functional Game Loop.
 - Rendering system that renders the components we want to draw.
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Temporary sprite/player/img class that acted as a placeholder.
 
-## [0.0.1-Alpha] - 2020-10-07
+## [0.0.1-Alpha.1] - 2020-10-07
 ### Added
 - This CHANGELOG file to hopefully serve as a project CHANGELOG.
 - README to explain everything with this project.

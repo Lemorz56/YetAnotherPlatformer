@@ -31,9 +31,17 @@ public:
 
     virtual void animationDone(std::string currentAnimation);
     virtual void setupAnimations();
+
+    void handleTileCollisions(std::vector<Rectangle> &others);
+
+    const float getX() const; // ONLY get not change
+    const float getY() const; // ONLY get not change
+
 private:
     float _dx, _dy;
 
     Direction _facing;
+
+    bool _grounded;
 };
 #endif //PLAYER_H
