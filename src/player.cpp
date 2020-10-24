@@ -11,8 +11,8 @@ namespace player_constants {
 
 Player::Player() = default;
 
-Player::Player(Graphics &graphics, float x, float y) :
-    AnimatedSprite(graphics, "res/sprites/MyCharFinal.png", 0, 0, 16, 16, x, y, 100),
+Player::Player(Graphics &graphics, Vector2 spawnPoint) :
+    AnimatedSprite(graphics, "res/sprites/MyCharFinal.png", 0, 0, 16, 16, spawnPoint.x, spawnPoint.y, 100),
     _dx(0),
     _dy(0),
     _facing(RIGHT),
@@ -62,10 +62,10 @@ void Player::stopMoving() {
  * handles collision with ALL tiles the player is colliding with
  */
 void Player::handleTileCollisions(std::vector<Rectangle> &others) {
-    // figure out what side the collision happened on and move the player correctly
-    for(int i = 0; i < others.size(); i++) {
+    //Figure out what side the collision happened on and move the player accordingly
+    for (int i = 0; i < others.size(); i++) {
         sides::Side collisionSide = Sprite::getCollisionSide(others.at(i));
-        if(collisionSide != sides::NONE) {
+        if (collisionSide != sides::NONE) {
             switch (collisionSide) {
                 case sides::TOP:
                     this->_y = others.at(i).getBottom() + 1;
@@ -83,19 +83,20 @@ void Player::handleTileCollisions(std::vector<Rectangle> &others) {
                     this->_x = others.at(i).getLeft() - this->_boundingBox.getWidth() - 1;
                     break;
             }
+
         }
     }
 }
 
 void Player::update(float elapsedTime) {
-    // Apply gravity
-    if (this->_dy <= player_constants::GRAVITY_CAP){
+    //Apply gravity
+    if (this->_dy <= player_constants::GRAVITY_CAP) {
         this->_dy += player_constants::GRAVITY * elapsedTime;
     }
 
-    // Move by dx
+    //Move by dx
     this->_x += this->_dx * elapsedTime;
-    // Move by dy
+    //Move by dy
     this->_y += this->_dy * elapsedTime;
 
     AnimatedSprite::update(elapsedTime);

@@ -26,13 +26,14 @@ void Game::gameLoop() {
     Input input;
     SDL_Event event;
     printf("Starting Gameloop\n");
-    // CREATE & INIT PLAYER
-    this->_player = Player(graphics, globals::SCREEN_WIDTH / 2, 100);
-    printf("Player Loaded\n");
+
     // CREATE & INIT LEVEL
-    printf("Loading Map...\n");
     this->_level = Level("Map1", Vector2(100, 100), graphics);
     printf("Map Loaded\n");
+
+    // CREATE & INIT PLAYER
+    this->_player = Player(graphics, this->_level.getPlayerSpawnPoint()); //this->_level.getPlayerSpawnPoint()
+    printf("Player Loaded\n");
 
     int LAST_UPDATE_TIME = SDL_GetTicks();
     // STARTING GAME LOOP
@@ -97,8 +98,8 @@ void Game::update(float elapsedTime) {
 
     // Check collisions
     std::vector<Rectangle> others;
-    if((others = this->_level.checkTileCollision( this->_player.getBoundingBox() )).size() > 0) {
-        // player collided with at least one tile -> handle it
+    if ((others = this->_level.checkTileCollisions(this->_player.getBoundingBox())).size() > 0) {
+        //Player collided with at least one tile. Handle it.
         this->_player.handleTileCollisions(others);
     }
 }

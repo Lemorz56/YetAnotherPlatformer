@@ -21,20 +21,20 @@ public:
     const int getCenterY() const { return this->_y + this->_height / 2; }
 
     const int getLeft() const { return this->_x; }
-    const int getRight() const { return this->_x + _width; }
+    const int getRight() const { return this->_x + this->_width; }
     const int getTop() const { return this->_y; }
     const int getBottom() const { return this->_y + this->_height; }
 
     const int getWidth() const { return this->_width; }
     const int getHeight() const { return this->_height; }
 
-    const int getSides(const sides::Side side) const {
+    const int getSide(const sides::Side side) const {
         return
                 side == sides::LEFT ? this->getLeft() :
                 side == sides::RIGHT ? this->getRight() :
                 side == sides::TOP ? this->getTop() :
                 side == sides::BOTTOM ? this->getBottom() :
-                side == sides::NONE;
+                sides::NONE;
     }
 
     /* bool collidesWith
@@ -43,7 +43,7 @@ public:
     const bool collidesWith(const Rectangle &other) const {
         return
                 this->getRight() >= other.getLeft() &&
-                this->getRight() <= other.getRight() &&
+                this->getLeft() <= other.getRight() &&
                 this->getTop() <= other.getBottom() &&
                 this->getBottom() >= other.getTop();
     }
@@ -54,7 +54,8 @@ public:
     const bool isValidRectangle() const {
         return (this->_x >= 0 && this->_y >= 0 && this->_width >= 0 && this->_height >= 0);
     }
-    int _x, _y, _width, _height;
+
 private:
+    int _x, _y, _width, _height;
 };
 #endif //RECTANGLE_H

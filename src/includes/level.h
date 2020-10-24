@@ -22,7 +22,9 @@ public:
     void update(int elapsedTime);
     void draw(Graphics &graphics);
 
-    std::vector<Rectangle> checkTileCollision(const Rectangle &other);
+    std::vector<Rectangle> checkTileCollisions(const Rectangle &other);
+
+    const Vector2 getPlayerSpawnPoint() const;
 
 private:
     std::string _mapName;

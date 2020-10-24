@@ -52,12 +52,12 @@ const Rectangle Sprite::getBoundingBox() const {
 const sides::Side Sprite::getCollisionSide(Rectangle &other) const {
     int amtRight, amtLeft, amtTop, amtBottom;
     amtRight = this->getBoundingBox().getRight() - other.getLeft();
-    amtLeft = other.getRight()- this->getBoundingBox().getLeft();
+    amtLeft = other.getRight() - this->getBoundingBox().getLeft();
     amtTop = other.getBottom() - this->getBoundingBox().getTop();
     amtBottom = this->getBoundingBox().getBottom() - other.getTop();
 
-    int lowestNum;
-    lowestNum = std::min({amtRight, amtLeft, amtTop, amtBottom});
+    int lowest;
+    lowest = std::min({amtRight, amtLeft, amtTop, amtBottom});
     /*
     int vals[4] = { abs(amtRight), abs(amtLeft), abs(amtTop), abs(amtBottom) };
     int lowest = vals[0];
