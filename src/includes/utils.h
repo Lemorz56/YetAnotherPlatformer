@@ -22,7 +22,7 @@ public:
             pos = txt.find(ch, initialPos);
         }
         // Add the last one
-        strs.emplace_back(txt.substr(initialPos, std::min<int>(pos, txt.size() = (initialPos + 1))));
+        strs.emplace_back(txt.substr(initialPos, std::min<int>(pos, txt.size() == (initialPos + 1))));
 
         return strs.size();
     }

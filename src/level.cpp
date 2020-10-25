@@ -4,12 +4,13 @@
 #include "includes/graphics.h"
 #include "includes/globals.h"
 #include "includes/tinyxml2.h"
-#include <SDL_log.h>
+#include "includes/utils.h"
 
 #include <sstream>
 #include <algorithm>
 #include <cmath>
 #include <SDL.h>
+#include <string>
 
 using namespace tinyxml2;
 
@@ -164,7 +165,7 @@ void Level::loadMap(std::string mapName, Graphics &graphics) { //TODO This needs
                         y = pObject->FloatAttribute("y");
                         width = pObject->FloatAttribute("width");
                         height = pObject->FloatAttribute("height");
-                        this->_collisionRects.push_back(Rectangle(
+                        this->_collisionRects.emplace_back(Rectangle(
                                 std::ceil(x) * globals::SPRITE_SCALE,
                                 std::ceil(y) * globals::SPRITE_SCALE,
                                 std::ceil(width) * globals::SPRITE_SCALE,
@@ -175,11 +176,54 @@ void Level::loadMap(std::string mapName, Graphics &graphics) { //TODO This needs
                     }
                 }
             }
-                //Other objectgroups go here with an else if (ss.str() == "whatever")
+            //Other objectgroups go here with an else if (ss.str() == "whatever")
+            else if( ss.str() == "slopes") {
+                XMLElement* pObject = pObjectGroup->FirstChildElement("object");
+
+                if(pObject != NULL) {
+                    while(pObject) {
+
+                        std::vector<Vector2>points;
+                        Vector2 p1;
+                        p1 = Vector2(std::ceil(pObject->FloatAttribute("x")), std::ceil(pObject->FloatAttribute("y")));
+
+                        XMLElement* pPolyline = pObject->FirstChildElement("polyline");
+                        if(pPolyline != NULL) {
+                            std::vector<std::string> pairs;
+                            const char* pointString = pPolyline->Attribute("points");
+
+                            // Creating a stringstream and splitting the polylines point from TMX with a space
+                            std::stringstream ss;
+                            ss << pointString;
+                            Utils::split(ss.str(), pairs, ' ');
+                            //loop through pairs and split into Vector2 and store in point vector
+                            for(int i = 0; i < pairs.size(); i++) {
+                                std::vector<std::string> ps;
+                                Utils::split(pairs.at(i), ps, ',');
+                                points.emplace_back(Vector2(std::stoi(ps.at(0)),std::stoi(ps.at(1))));
+                            }
+                        }
+
+                        for (int i = 0; i < points.size() - 1; i++) {
+                            Vector2 point1 = Vector2((p1.x + points.at(i).x) * globals::SPRITE_SCALE,
+                                                     (p1.y + points.at(i).y) * globals::SPRITE_SCALE);
+                            Vector2 point2 = Vector2((p1.x + points.at(i + 1).x) * globals::SPRITE_SCALE,
+                                                     (p1.y + points.at(i + 1).y) * globals::SPRITE_SCALE);
+                            Slope slope = Slope(point1, point2);
+
+                            _slopes.push_back(slope);
+                        }
+
+                        pObject = pObject->NextSiblingElement("object");
+                    }
+                }
+            }
             else if (ss.str() == "spawnpoints") {
                 XMLElement* pObject = pObjectGroup->FirstChildElement("object");
+
                 if (pObject != NULL) {
                     while (pObject) {
+
                         float x = pObject->FloatAttribute("x");
                         float y = pObject->FloatAttribute("y");
                         const char* name = pObject->Attribute("name");
@@ -189,7 +233,6 @@ void Level::loadMap(std::string mapName, Graphics &graphics) { //TODO This needs
                             this->_spawnPoint = Vector2(std::ceil(x) * globals::SPRITE_SCALE,
                                                         std::ceil(y) * globals::SPRITE_SCALE);
                         }
-
                         pObject = pObject->NextSiblingElement("object");
                     }
                 }

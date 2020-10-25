@@ -4,6 +4,7 @@
 #define SLOPE_H
 
 #include "globals.h"
+#include <cmath>
 
 class Slope {
 public:
@@ -30,7 +31,7 @@ public:
                 ||
                 (other.getRight() >= _p1.x &&
                 other.getLeft() <= _p2.x &&
-                other.getTop() <= p1.y &&
+                other.getTop() <= _p1.y &&
                 other.getBottom() >= _p2.y)
                 ||
                 (other.getLeft() <= _p1.x &&
@@ -43,6 +44,9 @@ public:
                 other.getTop() <= _p2.y &&
                 other.getBottom() >= _p1.y);
     }
+
+    const inline Vector2 getP1() const { return _p1; }
+    const inline Vector2 getP2() const { return _p2; }
 
 private:
     Vector2 _p1, _p2;
